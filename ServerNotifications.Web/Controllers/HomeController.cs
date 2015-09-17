@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ServerNotifications.Web.Models;
+using ServerNotifications.Web.Models.Repository;
 
 namespace ServerNotifications.Web.Controllers
 {
