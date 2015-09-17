@@ -4,7 +4,7 @@ namespace ServerNotifications.Web.Domain.Twilio
 {
     public interface IRestClient
     {
-        Message SendMessage(string to, string body, params string[] mediaUrl);
+        Message SendMessage(string from, string to, string body, params string[] mediaUrl);
     }
 
     public class RestClient : IRestClient
@@ -21,9 +21,9 @@ namespace ServerNotifications.Web.Domain.Twilio
             _client = client;
         }
 
-        public Message SendMessage(string to, string body, params string[] mediaUrl)
+        public Message SendMessage(string from, string to, string body, params string[] mediaUrl)
         {
-            return _client.SendMessage(Credentials.TwilioPhoneNumber, to, body, mediaUrl);
+            return _client.SendMessage(from, to, body, mediaUrl);
         }
     }
 }

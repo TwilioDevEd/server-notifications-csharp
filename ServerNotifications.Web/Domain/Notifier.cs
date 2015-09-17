@@ -23,7 +23,7 @@ namespace ServerNotifications.Web.Domain
         public void SendMessages()
         {
             _administratorsRepository.All().ForEach(administrator =>
-                _restClient.SendMessage(administrator.PhoneNumber, Message, ImageUrl));
+                _restClient.SendMessage(Credentials.TwilioPhoneNumber, administrator.PhoneNumber, Message, ImageUrl));
         }
     }
 }
