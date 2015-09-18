@@ -6,9 +6,6 @@ namespace ServerNotifications.Web.Domain
 {
     public class Notifier
     {
-        private const string Message = "[This is a test] ALERT!" +
-                "It appears the server is having issues." +
-                "Exception: #{e}. Go to: http://newrelic.com for more details.";
         private const string ImageUrl = "http://howtodocs.s3.amazonaws.com/new-relic-monitor.png";
 
         private readonly IAdministratorsRepository _administratorsRepository;
@@ -20,10 +17,10 @@ namespace ServerNotifications.Web.Domain
             _restClient = restClient;
         }
         
-        public void SendMessages()
+        public void SendMessages(string message)
         {
             _administratorsRepository.All().ForEach(administrator =>
-                _restClient.SendMessage(Credentials.TwilioPhoneNumber, administrator.PhoneNumber, Message, ImageUrl));
+                _restClient.SendMessage(Credentials.TwilioPhoneNumber, administrator.PhoneNumber, message, ImageUrl));
         }
     }
 }

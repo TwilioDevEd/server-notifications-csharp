@@ -25,7 +25,7 @@ namespace ServerNotifications.Web.Test.Domain
             mockRestClient.Setup(
                 x => x.SendMessage(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
 
-            new Notifier(mockRepository.Object, mockRestClient.Object).SendMessages();
+            new Notifier(mockRepository.Object, mockRestClient.Object).SendMessages("some error message");
 
             mockRestClient.Verify(
                 x => x.SendMessage(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()),

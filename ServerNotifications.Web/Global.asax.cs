@@ -21,10 +21,13 @@ namespace ServerNotifications.Web
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            // At this point we should capture the last exception thrown by doing
-            // var exception = Server.GetLastError();
+            var exception = Server.GetLastError();
+            var message = string.Format("[This is a test] ALERT!" +
+                "It appears the server is having issues." +
+                "Exception: {0}. Go to: http://newrelic.com for more details.", exception.Message);
+
             var notifier = new Notifier(new AdministratorsRepository(), new RestClient());
-            notifier.SendMessages();
+            notifier.SendMessages(message);
         }
     }
 }
