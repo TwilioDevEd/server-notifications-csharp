@@ -1,0 +1,141 @@
+.chapter(data-title='Server Notifications and Alerts')
+  .step(data-file='ServerNotifications.Web/App_Data/administrators.csv')
+    :markdown
+      ## What does this thing do?
+
+      This [ASP.NET](http://www.asp.net/mvc) sample application demonstrates
+      how to send SMS alerts to a list of system administrators if something goes
+      wrong on your server. In this tutorial, we'll show you the key bits of code
+      to make this work.
+
+      Let's get started!
+
+      ---
+
+      **See Also:**
+      * [ASP.NET](http://www.asp.net/mvc)
+      * [Getting Started with ASP.NET MVC
+      5](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started)
+
+  .step(data-file='ServerNotifications.Web/App_Data/administrators.csv')
+    :markdown
+      ## List server admins
+
+      Create a list of administrators who should be notified if a server error occurs.
+      The only requirement we have is a `PhoneNumber`.
+
+      ---
+
+      **See Also:**
+      * [Definition of the CSV Format](https://tools.ietf.org/html/rfc4180#section-2)
+
+  .step(data-file='ServerNotifications.Web/Domain/Twilio/RestClient.cs',
+  data-highlight='14-17')
+    :markdown
+      ## Configure Twilio client
+
+      In order to send a message we'll need to initialize the [Twilio C# Helper
+      Library](https://www.twilio.com/docs/csharp/install),
+      which requires reading our `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN`
+      defined at `ServerNotifications.Web/Web.config`
+
+      ---
+
+      **See Also:**
+      * [Twilio C# Helper Library](https://www.twilio.com/docs/csharp/install)
+      * [Twilio.Api
+      Wiki](https://github.com/twilio/twilio-csharp/wiki/Twilio.Api)
+
+  .step(data-file='ServerNotifications.Web/Global.asax.cs',
+  data-highlight='22-31')
+    :markdown
+      ## Handle all errors
+
+      In a ASP.NET MVC application we can handle errors at Application-Level to
+      do it we add `Application_Error` method to handle all of them.
+
+      **Important:** The errors that are being catched by a **Try/Catch** block
+      are not being captured by `Application_Error`.
+
+      ---
+
+      **See Also:**
+      * [How to: Handle Application-Level
+      Errors](https://msdn.microsoft.com/en-us/library/24395wz3.aspx)
+      * [Exception handling in ASP.NET
+      MVC](http://www.codeproject.com/Articles/850062/Exception-handling-in-ASP-NET-MVC-methods-explaine)
+
+  .step(data-file='ServerNotifications.Web/Global.asax.cs',
+  data-highlight='24-27')
+    :markdown
+      ## Create a custom alert message
+
+      Here we create an alert message to send out via text message. You might also
+      decide to include a picture with your alert message, maybe a screenshot of the
+      application when the crash happened?
+
+      ---
+
+      **See Also:**
+      * [String.Format
+      Method](https://msdn.microsoft.com/en-us/library/system.string.format.aspx)
+
+  .step(data-file='ServerNotifications.Web/Models/Repository/AdministratorsRepository.cs',
+  data-highlight='17-24')
+    :markdown
+      ## Reading the admins from the CSV file
+
+      Next we read the admins [from our CSV
+      file](http://joshclose.github.io/CsvHelper/). We use the method
+      `GetRecords` to read all the records.
+
+      ---
+
+      **See Also:**
+      [CsvHelper](http://joshclose.github.io/CsvHelper/)
+
+  .step(data-file='ServerNotifications.Web/Domain/Twilio/RestClient.cs',
+  data-highlight='14-17,24-27')
+    :markdown
+      ## Sending a text message
+
+      There are the three parameters needed to [send an
+      SMS](https://www.twilio.com/docs/quickstart/csharp/sms/sending-via-rest)
+      using the [Twilio REST API](https://www.twilio.com/docs/api/rest):
+      `:from`, `:to`, and `:body`. After the message is sent, we print out the
+      phone number we're texting. [US phone
+      numbers](https://www.twilio.com/help/faq/sms/is-mms-supported-for-all-carriers-in-us-and-canada)
+      can also send an image with the message.
+
+      ---
+
+      **See Also:**
+      * [REST API Docs for Message resource](https://www.twilio.com/docs/api/rest/message)
+      * [Your message logs in the account portal](https://www.twilio.com/user/account/log/messages)
+
+  .step
+    :markdown
+      ## Where to next?
+
+      That's it! We've just implemented an automated server notification system
+      that can send you server alerts if anything goes wrong. If you're a C#
+      developer working with Twilio, you might want to check out these other
+      tutorials.
+
+      [**Two-Factor
+      Authentication**](https://www.twilio.com/docs/howto/walkthrough/two-factor-authentication/csharp/mvc)
+
+      Increase the security of your login system by verifying a user's mobile
+      phone in addition to their password.
+
+      [**Appointment
+      Reminders**](https://www.twilio.com/docs/howto/walkthrough/appointment-reminders/csharp/mvc)
+
+      Send your customers a text message when they have an upcoming appointment,
+      this tutorial shows you how to do it from a background job.
+
+      ### Did this help?
+
+      Thanks for checking out this tutorial! If you have any feedback to share
+      with us, we'd love to hear it. Tweet [@twilio](http://twitter.com/twilio)
+      to let us know what you think.
