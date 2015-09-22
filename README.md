@@ -3,9 +3,9 @@
 [![Build
 status](https://ci.appveyor.com/api/projects/status/s4edbvaqo9yv64o8/branch/master?svg=true)](https://ci.appveyor.com/project/acamino/server-notifications-csharp/branch/master)
 
-<a href="https://raw.github.com/TwilioDevEd/server-notifications-csharp/master/notification.png"
+<a href="http://howtodocs.s3.amazonaws.com/server-notifications-notification.png"
    target="_blank">
-  <img src="https://raw.github.com/TwilioDevEd/server-notifications-csharp/master/notification.png"
+  <img src="http://howtodocs.s3.amazonaws.com/server-notifications-notification.png"
        alt="Notification on phone" width="60%" />
 </a>
 
