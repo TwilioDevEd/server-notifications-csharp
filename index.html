@@ -42,18 +42,15 @@ defined at <code>ServerNotifications.Web/Web.config</code></p>
 <li><a href="https://github.com/twilio/twilio-csharp/wiki/Twilio.Api">Twilio.Api
 Wiki</a></li>
 </ul>
-</div><div data-file="ServerNotifications.Web/Global.asax.cs" data-highlight="22-31" class="step"><h2 id="handle-all-errors">Handle all errors</h2>
-<p>In a ASP.NET MVC application we can handle errors at Application-Level to
-do it we add <code>Application_Error</code> method to handle all of them.</p>
-<p><strong>Important:</strong> The errors that are being catched by a <strong>Try/Catch</strong> block
-are not being captured by <code>Application_Error</code>.</p>
+</div><div data-file="ServerNotifications.Web/Global.asax.cs" data-highlight="22-31" class="step"><h2 id="handle-all-application-errors">Handle all application errors</h2>
+<p>In an ASP.NET MVC application, we can handle errors at the application 
+level. Note that any other exceptions caught in the code (using your own 
+try/catch blocks) are not being captured and processed here.</p>
 <hr>
 <p><strong>See Also:</strong></p>
 <ul>
-<li><a href="https://msdn.microsoft.com/en-us/library/24395wz3.aspx">How to: Handle Application-Level
-Errors</a></li>
-<li><a href="http://www.codeproject.com/Articles/850062/Exception-handling-in-ASP-NET-MVC-methods-explaine">Exception handling in ASP.NET
-MVC</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/24395wz3.aspx">How to handle application-level errors</a></li>
+<li><a href="http://www.codeproject.com/Articles/850062/Exception-handling-in-ASP-NET-MVC-methods-explaine">Exception handling in ASP.NET MVC</a></li>
 </ul>
 </div><div data-file="ServerNotifications.Web/Global.asax.cs" data-highlight="24-27" class="step"><h2 id="create-a-custom-alert-message">Create a custom alert message</h2>
 <p>Here we create an alert message to send out via text message. You might also
@@ -78,8 +75,7 @@ file</a>. We use the method
 <p>There are the three parameters needed to <a href="https://www.twilio.com/docs/quickstart/csharp/sms/sending-via-rest">send an
 SMS</a>
 using the <a href="https://www.twilio.com/docs/api/rest">Twilio REST API</a>:
-<code>:from</code>, <code>:to</code>, and <code>:body</code>. After the message is sent, we print out the
-phone number we&#39;re texting. <a href="https://www.twilio.com/help/faq/sms/is-mms-supported-for-all-carriers-in-us-and-canada">US phone
+<code>From</code>, <code>To</code>, and <code>Body</code>. <a href="https://www.twilio.com/help/faq/sms/is-mms-supported-for-all-carriers-in-us-and-canada">US and Canadian phone
 numbers</a>
 can also send an image with the message.</p>
 <hr>

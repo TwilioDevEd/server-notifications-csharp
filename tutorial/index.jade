@@ -49,21 +49,17 @@
   .step(data-file='ServerNotifications.Web/Global.asax.cs',
   data-highlight='22-31')
     :markdown
-      ## Handle all errors
+      ## Handle all application errors
 
-      In a ASP.NET MVC application we can handle errors at Application-Level to
-      do it we add `Application_Error` method to handle all of them.
-
-      **Important:** The errors that are being catched by a **Try/Catch** block
-      are not being captured by `Application_Error`.
+      In an ASP.NET MVC application, we can handle errors at the application 
+      level. Note that any other exceptions caught in the code (using your own 
+      try/catch blocks) are not being captured and processed here.
 
       ---
 
       **See Also:**
-      * [How to: Handle Application-Level
-      Errors](https://msdn.microsoft.com/en-us/library/24395wz3.aspx)
-      * [Exception handling in ASP.NET
-      MVC](http://www.codeproject.com/Articles/850062/Exception-handling-in-ASP-NET-MVC-methods-explaine)
+      * [How to handle application-level errors](https://msdn.microsoft.com/en-us/library/24395wz3.aspx)
+      * [Exception handling in ASP.NET MVC](http://www.codeproject.com/Articles/850062/Exception-handling-in-ASP-NET-MVC-methods-explaine)
 
   .step(data-file='ServerNotifications.Web/Global.asax.cs',
   data-highlight='24-27')
@@ -102,8 +98,7 @@
       There are the three parameters needed to [send an
       SMS](https://www.twilio.com/docs/quickstart/csharp/sms/sending-via-rest)
       using the [Twilio REST API](https://www.twilio.com/docs/api/rest):
-      `:from`, `:to`, and `:body`. After the message is sent, we print out the
-      phone number we're texting. [US phone
+      `From`, `To`, and `Body`. [US and Canadian phone
       numbers](https://www.twilio.com/help/faq/sms/is-mms-supported-for-all-carriers-in-us-and-canada)
       can also send an image with the message.
 
