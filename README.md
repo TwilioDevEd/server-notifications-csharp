@@ -1,7 +1,6 @@
 # Server Notifications on ASP.NET MVC
 
-[![Build
-status](https://ci.appveyor.com/api/projects/status/s4edbvaqo9yv64o8/branch/master?svg=true)](https://ci.appveyor.com/project/acamino/server-notifications-csharp/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/0iieup1dq9490msy?svg=true)](https://ci.appveyor.com/project/TwilioDevEd/server-notifications-csharp)
 
 <a href="http://howtodocs.s3.amazonaws.com/server-notifications-notification.png"
    target="_blank">
