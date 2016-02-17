@@ -2,14 +2,9 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/0iieup1dq9490msy?svg=true)](https://ci.appveyor.com/project/TwilioDevEd/server-notifications-csharp)
 
-<a href="http://howtodocs.s3.amazonaws.com/server-notifications-notification.png"
-   target="_blank">
-  <img src="http://howtodocs.s3.amazonaws.com/server-notifications-notification.png"
-       alt="Notification on phone" width="60%" />
-</a>
+Use Twilio to send SMS alerts so that you never miss a critical issue.
 
-Use Twilio to create sms server alerts so that you never miss a critical server
-issue.
+[Read the full tutorial here](https://www.twilio.com/docs/tutorials/walkthrough/server-notifications/csharp/mvc)!
 
 ### Local development
 
