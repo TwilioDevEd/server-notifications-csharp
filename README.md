@@ -1,5 +1,7 @@
 # Server Notifications on ASP.NET MVC
 
+## NOTE: This is the Visual Studio 2012 / MVC 3 compatible project. Switch to `master` branch for Visual Studio 2013/2015 and MVC 5.
+
 [![Build status](https://ci.appveyor.com/api/projects/status/0iieup1dq9490msy?svg=true)](https://ci.appveyor.com/project/TwilioDevEd/server-notifications-csharp)
 
 Use Twilio to send SMS alerts so that you never miss a critical issue.
