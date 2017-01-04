@@ -2,16 +2,17 @@
 using Moq;
 using NUnit.Framework;
 using ServerNotifications.Web.Domain;
-using ServerNotifications.Web.Domain.Twilio;
 using ServerNotifications.Web.Models;
 using ServerNotifications.Web.Models.Repository;
+using Twilio.Http;
+using Twilio.Clients;
 
 namespace ServerNotifications.Web.Test.Domain
 {
     public class NotifierTest
     {
         [Test]
-        public void SendMessages_sends_a_message_to_each_administrator()
+        public async void SendMessages_sends_a_message_to_each_administrator()
         {
             var mockRepository = new Mock<IAdministratorsRepository>();
             mockRepository.Setup(x => x.All())
@@ -21,15 +22,16 @@ namespace ServerNotifications.Web.Test.Domain
                     new Administrator {Name = "Alice"}
                 });
 
-            var mockRestClient = new Mock<IRestClient>();
-            mockRestClient.Setup(
-                x => x.SendMessage(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
+            var twilioClientMock = new Mock<ITwilioRestClient>();
+            twilioClientMock.Setup(c => c.AccountSid).Returns("AccountSID");
+            twilioClientMock.Setup(c => c.RequestAsync(It.IsAny<Request>()))
+                            .ReturnsAsync(new Response(System.Net.HttpStatusCode.Created, ""));
 
-            new Notifier(mockRepository.Object, mockRestClient.Object).SendMessages("some error message");
+            var notifier = new Notifier(mockRepository.Object, twilioClientMock.Object);
+            await notifier.SendMessagesAsync("some error message");
 
-            mockRestClient.Verify(
-                x => x.SendMessage(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()),
-                Times.Exactly(2));
+            twilioClientMock.Verify(
+                c => c.RequestAsync(It.IsAny<Request>()), Times.Exactly(2));
         }
     }
 }

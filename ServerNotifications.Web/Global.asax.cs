@@ -4,7 +4,6 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using ServerNotifications.Web.Domain;
-using ServerNotifications.Web.Domain.Twilio;
 using ServerNotifications.Web.Models.Repository;
 
 namespace ServerNotifications.Web
@@ -19,15 +18,15 @@ namespace ServerNotifications.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        protected void Application_Error(object sender, EventArgs e)
+        protected async void Application_Error(object sender, EventArgs e)
         {
             var exception = Server.GetLastError();
             var message = string.Format("[This is a test] ALERT!" +
                 "It appears the server is having issues." +
                 "Exception: {0}. Go to: http://newrelic.com for more details.", exception.Message);
 
-            var notifier = new Notifier(new AdministratorsRepository(), new RestClient());
-            notifier.SendMessages(message);
+            var notifier = new Notifier(new AdministratorsRepository());
+            await notifier.SendMessagesAsync(message);
         }
     }
 }
