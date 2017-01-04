@@ -1,29 +1,43 @@
-﻿using Twilio;
+﻿using System.Collections.Generic;
+using System;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
+using Twilio.Clients;
+using System.Threading.Tasks;
 
 namespace ServerNotifications.Web.Domain.Twilio
 {
     public interface IRestClient
     {
-        Message SendMessage(string from, string to, string body, params string[] mediaUrl);
+        Task<MessageResource> SendMessage(string from, string to, string body, List<Uri> mediaUrl);
     }
 
     public class RestClient : IRestClient
-    {   
-        private readonly TwilioRestClient _client;
+    {
+        private readonly ITwilioRestClient _client;
 
         public RestClient()
         {
-            _client = new TwilioRestClient(Credentials.TwilioAccountSid, Credentials.TwilioAuthToken);
+            _client = new TwilioRestClient(
+                Credentials.TwilioAccountSid,
+                Credentials.TwilioAuthToken
+            );
         }
 
-        public RestClient(TwilioRestClient client)
+        public RestClient(ITwilioRestClient client)
         {
             _client = client;
         }
 
-        public Message SendMessage(string from, string to, string body, params string[] mediaUrl)
+        public async Task<MessageResource> SendMessage(string from, string to, string body, List<Uri> mediaUrl)
         {
-            return _client.SendMessage(from, to, body, mediaUrl);
+            var toPhoneNumber = new PhoneNumber(to);
+            return await MessageResource.CreateAsync(
+                toPhoneNumber,
+                from: new PhoneNumber(from),
+                body: body,
+                mediaUrl: mediaUrl,
+                client: _client);
         }
     }
 }
