@@ -1,30 +1,30 @@
 ﻿using Moq;
 using NUnit.Framework;
-using RestSharp;
+using System;
+using System.Collections.Generic;
+using Twilio.Clients;
+using Twilio.Http;
 using ServerNotifications.Web.Domain.Twilio;
-using Twilio;
 
 namespace ServerNotifications.Web.Test.Domain.Twilio
 {
     public class RestClientTest
     {
         [Test]
-        public void SendMessage()
+        public async void SendMessage()
         {
-            var mockClient = new Mock<TwilioRestClient>(Credentials.TwilioAccountSid, Credentials.TwilioAuthToken) { CallBase = true };
-            IRestRequest savedRequest = null;
-            mockClient.Setup(trc => trc.Execute<Message>(It.IsAny<IRestRequest>()))
-                .Callback<IRestRequest>(request => savedRequest = request)
-                .Returns(new Message());
+            var twilioClientMock = new Mock<ITwilioRestClient>();
+            twilioClientMock.Setup(c => c.AccountSid).Returns("AccountSID");
+            twilioClientMock.Setup(c => c.RequestAsync(It.IsAny<Request>()))
+                            .ReturnsAsync(new Response(System.Net.HttpStatusCode.Created, ""));
 
-            var client = new Web.Domain.Twilio.RestClient(mockClient.Object);
-            
             const string body = "Alert message";
-            client.SendMessage("from", "to", body, "image");
+            List<Uri> mediaUrl = new List<Uri> { new Uri("http://example.com/image") };
+            var client = new RestClient(twilioClientMock.Object);
+            await client.SendMessage("from", "to", body, mediaUrl);
 
-            mockClient.Verify(trc => trc.Execute<Message>(It.IsAny<IRestRequest>()), Times.Once);
-            Assert.IsNotNull(savedRequest);
-            Assert.That(savedRequest, Is.Not.Null);
+            twilioClientMock.Verify(
+                c => c.RequestAsync(It.IsAny<Request>()), Times.Once);
         }
     }
 }
