@@ -18,7 +18,7 @@ namespace ServerNotifications.Web.Models.Repository
         {
             using (var streamReader = new StreamReader(HttpContext.Current.Server.MapPath("~/App_Data/administrators.csv")))
             {
-                var reader = new CsvReader(streamReader);
+                var reader = new CsvReader(streamReader, System.Globalization.CultureInfo.CurrentCulture);
                 return reader.GetRecords<Administrator>().ToList();
             }
         }

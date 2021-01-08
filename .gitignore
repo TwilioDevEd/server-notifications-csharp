@@ -206,4 +206,4 @@ FakesAssemblies/
 *.opt
 
 # Project specific options
-ServerNotifications.Web/Web.config
+ServerNotifications.Web/Local.config

@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using Twilio.Clients;
 using Twilio.Http;
 using ServerNotifications.Web.Domain.Twilio;
+using System.Threading.Tasks;
 
 namespace ServerNotifications.Web.Test.Domain.Twilio
 {
     public class RestClientTest
     {
         [Test]
-        public async void SendMessage()
+        public async Task SendMessage()
         {
             var twilioClientMock = new Mock<ITwilioRestClient>();
             twilioClientMock.Setup(c => c.AccountSid).Returns("AccountSID");

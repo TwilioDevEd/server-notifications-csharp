@@ -4,7 +4,7 @@
 
 # Server Notifications on ASP.NET MVC
 
-[![Build status](https://ci.appveyor.com/api/projects/status/0iieup1dq9490msy?svg=true)](https://ci.appveyor.com/project/TwilioDevEd/server-notifications-csharp)
+![](https://github.com/TwilioDevEd/server-notifications-csharp/workflows/NetFx/badge.svg)
 
 Use Twilio to send SMS alerts so that you never miss a critical issue.
 
@@ -19,13 +19,12 @@ Use Twilio to send SMS alerts so that you never miss a critical issue.
    cd server-notifications-csharp
    ```
 
-2. Create a copy of `ServerNotifications.Web/Web.config.sample` and rename it to
-   `ServerNotifications.Web/Web.config`.
+2. Create a copy of `ServerNotifications.Web/Local.config.sample` and rename it to
+   `ServerNotifications.Web/Local.config`.
 
-3. Open `ServerNotifications.Web/Web.config` and update the following keys:
+3. Open `ServerNotifications.Web/Local.config` and update the following keys:
    ```
    <appSettings>
-     <!-- omitted for clarity -->
      <add key="TwilioAccountSid" value="TWILIO_ACCOUNT_SID"/>
      <add key="TwilioAuthToken" value="TWILIO_AUTH_TOKEN"/>
      <add key="TwilioPhoneNumber" value="TWILIO_PHONE_NUMBER"/>

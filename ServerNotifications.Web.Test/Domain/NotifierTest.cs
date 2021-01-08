@@ -6,13 +6,14 @@ using ServerNotifications.Web.Models;
 using ServerNotifications.Web.Models.Repository;
 using Twilio.Http;
 using Twilio.Clients;
+using System.Threading.Tasks;
 
 namespace ServerNotifications.Web.Test.Domain
 {
     public class NotifierTest
     {
         [Test]
-        public async void SendMessages_sends_a_message_to_each_administrator()
+        public async Task SendMessages_sends_a_message_to_each_administrator()
         {
             var mockRepository = new Mock<IAdministratorsRepository>();
             mockRepository.Setup(x => x.All())
