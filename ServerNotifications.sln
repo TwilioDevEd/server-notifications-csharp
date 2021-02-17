@@ -1,11 +1,28 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerNotifications.Web", "ServerNotifications.Web\ServerNotifications.Web.csproj", "{BE48682F-4B39-47B8-8838-A446234334EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerNotifications.Web.Test", "ServerNotifications.Web.Test\ServerNotifications.Web.Test.csproj", "{7572DC6D-8F1F-4B3A-B813-162A20A8E11B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{211D47CB-7EA3-4C06-98F5-4FE5C4199825}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.mergify.yml = .mergify.yml
+		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
+		CONTRIBUTING.md = CONTRIBUTING.md
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{19736872-8594-4553-A12C-BEE9FBDCA32F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{01B52D8B-9138-48B9-B4C6-AF5E8739F76F}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\NetFx.yml = .github\workflows\NetFx.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +41,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{19736872-8594-4553-A12C-BEE9FBDCA32F} = {211D47CB-7EA3-4C06-98F5-4FE5C4199825}
+		{01B52D8B-9138-48B9-B4C6-AF5E8739F76F} = {19736872-8594-4553-A12C-BEE9FBDCA32F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE5C0364-89DF-473E-8D3A-498391AC3BF3}
 	EndGlobalSection
 EndGlobal

@@ -12,7 +12,6 @@ namespace ServerNotifications.Web.Domain
 {
     public class Notifier
     {
-        private Uri _imageUrl = new Uri("http://howtodocs.s3.amazonaws.com/new-relic-monitor.png");
 
         private readonly IAdministratorsRepository _administratorsRepository;
         private readonly ITwilioRestClient _restClient;
@@ -31,14 +30,14 @@ namespace ServerNotifications.Web.Domain
 
         public async Task SendMessagesAsync(string message)
         {
-            var mediaUrl = new List<Uri> { _imageUrl };
-            _administratorsRepository.All().ForEach(async administrator =>
+            foreach (var administrator in _administratorsRepository.All())
+            {
                 await MessageResource.CreateAsync(
                     new PhoneNumber(administrator.PhoneNumber),
                     from: new PhoneNumber(Credentials.TwilioPhoneNumber),
                     body: message,
-                    mediaUrl: mediaUrl,
-                    client: _restClient));
+                    client: _restClient);
+            }
         }
     }
 }

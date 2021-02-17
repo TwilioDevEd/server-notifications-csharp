@@ -25,9 +25,9 @@ namespace ServerNotifications.Web
         protected async void Application_Error(object sender, EventArgs e)
         {
             var exception = Server.GetLastError();
-            var message = string.Format("[This is a test] ALERT!" +
-                "It appears the server is having issues." +
-                "Exception: {0}. Go to: http://newrelic.com for more details.", exception.Message);
+            var message = string.Format(
+                "[This is a test] ALERT! It appears the server is having issues. Exception: {0}.",
+                exception.Message);
 
             var notifier = new Notifier(new AdministratorsRepository());
             await notifier.SendMessagesAsync(message);
