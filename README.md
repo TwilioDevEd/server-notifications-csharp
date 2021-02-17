@@ -19,10 +19,10 @@ Use Twilio to send SMS alerts so that you never miss a critical issue.
    cd server-notifications-csharp
    ```
 
-2. Create a copy of `ServerNotifications.Web/Local.config.sample` and rename it to
+1. Create a copy of `ServerNotifications.Web/Local.config.sample` and rename it to
    `ServerNotifications.Web/Local.config`.
 
-3. Open `ServerNotifications.Web/Local.config` and update the following keys:
+1. Open `ServerNotifications.Web/Local.config` and update the following keys:
    ```
    <appSettings>
      <add key="TwilioAccountSid" value="TWILIO_ACCOUNT_SID"/>
@@ -37,9 +37,16 @@ Use Twilio to send SMS alerts so that you never miss a critical issue.
    Also, you can find a _Twilio Phone Number_ at
    https://www.twilio.com/user/account/phone-numbers/incoming
 
-4. Open `ServerNotifications.Web/App_Data/administrators.csv` and update the the
+1. Open `ServerNotifications.Web/App_Data/administrators.csv` and update the the
    list of administrators accordingly to your requirements.
 
-5. Build the solution.
+1. Build the solution and run the web project. You'll receive a text shortly with details on the exception.
 
    That's it!
+
+
+## Meta
+
+* No warranty expressed or implied. Software is as is. Diggity.
+* [MIT License](LICENSE)
+* Lovingly crafted by Twilio Developer Education.

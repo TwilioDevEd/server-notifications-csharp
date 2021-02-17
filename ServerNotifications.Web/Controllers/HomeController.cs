@@ -9,7 +9,7 @@ namespace ServerNotifications.Web.Controllers
         {
             // We reach some exceptional condition, and the
             // applicaiton is gonna throw an exeption.
-            throw new Exception("Ups, something went wrong!");
+            throw new Exception("[this is a test] Ups, something went wrong!");
         }
     }
 }

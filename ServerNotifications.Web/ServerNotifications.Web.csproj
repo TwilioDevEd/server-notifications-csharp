@@ -181,6 +181,7 @@
     <Content Include="App_Data\administrators.csv" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Local.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
